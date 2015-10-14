@@ -15,6 +15,8 @@ const double WINDOW_WIDTH = 800;
 
 const double WINDOW_HEIGHT = 600;
 
+const double SET_SCALE = 4/WINDOW_HEIGHT; // for setting the display size of the Mandelbrot set
+
 
 //converts values of r, g, b into a color with name in the form "#rrggbb", where each of the rr, gg, and bb values are two-digit hexadecimal numbers
 string getColor(double r, double g, double b);
@@ -41,8 +43,8 @@ int main() {
                 double x_i = x; // remember the value of x on this iteration to calculate y
 
                 //divide by 180 to get the polar coordinates
-                x = x*x - y*y + coordR/180;
-                y = 2*x_i*y + coordI/180;
+                x = x*x - y*y + coordR*SET_SCALE;
+                y = 2*x_i*y + coordI*SET_SCALE;
 
                 if(sqrt(x*x + y*y) >= 2){ // checks the point for belonging to the Mandelbrot set
                     break;
